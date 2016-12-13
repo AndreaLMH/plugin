@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+<style>
+	*{
+		margin:0;
+		padding:0;
+		box-sizing:border-box;
+	}
+	.gwc{
+		width:80px;
+		height:40px;
+		border:1px solid #ccc;
+		padding:5px;
+		position:relative;
+	}
+	.gwc input{
+		width:40px;
+		height:38px;
+		border:none;
+	}
+	.gwc span{
+		position:absolute;
+		right:5px;
+		width:0;
+		height:0;
+		border:10px solid transparent;
+		font-size:0;
+	}
+	.gwc .add{
+		border-bottom-color:#999;
+		top:-5px;
+	}
+	.gwc .sub{
+		border-top-color:#999;
+		bottom:-5px;
+	}
+
+</style>
+</head>
+<body>
+	<div class="box">
+		<p>单价：<i>30</i></p>
+		<p>总价：<b>0</b></p>
+	</div>
+<script src="js/jquery.js"></script>
+<script src="js/gwc.js"></script>
+<script>
+	$.gwc({
+		min:1,//最少购买数量
+		max:10,//最多购买数量
+		//step:2,//步长
+		wrap:$(".box"),
+		callback:function(n){
+			//数量*单价
+			var price=this.wrap.find("i").text();
+			//console.log(price)
+				this.wrap.find("b").text(n*price);
+		}
+	})
+</script>
+</body>
+</html>
